@@ -1,0 +1,74 @@
+# Source files
+src/
+*.ts
+!*.d.ts
+
+# Development files
+.eslintrc.*
+.prettierrc*
+tsconfig*.json
+jest.config.*
+*.test.*
+*.spec.*
+__tests__/
+test/
+tests/
+
+# Documentation (except README)
+docs/
+CONTRIBUTING.md
+CHANGELOG.md
+
+# Git files
+.git/
+.gitignore
+.env
+Environment/
+
+# CI/CD
+.github/
+.travis.yml
+.circleci/
+
+# Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Package manager
+pnpm-lock.yaml
+yarn.lock
+.pnp.*
+.yarn/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Dependencies
+node_modules/
+
+# Build tools
+.tsbuildinfo
+
+# Temporary files
+tmp/
+temp/
+
+# Environment files
+.env*
+!.env.example

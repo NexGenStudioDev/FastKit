@@ -1,1 +1,1 @@
-console.log('Hello, FastKit!');
+export * from './config/FastKit-Config';

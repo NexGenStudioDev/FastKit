@@ -1,14 +1,31 @@
 {
-  "name": "FastKi",
-  "version": "1.0.0",
+  "name": "@abhishek-nexgen-dev/fastkit",
+  "type": "commonjs",
+  "version": "1.0.1",
   "description": "A modular, class-based toolkit for fast API development with TypeScript and Express.",
-  "main": "index.js",
+  "main": "dist/FastKit.js",
+  "types": "dist/FastKit.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsc",
+    "clean": "rimraf dist",
+    "rebuild": "npm run clean && npm run build",
+    "rebuild:pnpm": "pnpm run clean && pnpm run build",
     "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "start:dev": "ts-node-dev --respawn --transpile-only src/FastKit.ts",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,json,md}'",
-    "prepublishOnly": "pnpm run lint && pnpm run build"
+    "prepublishOnly": "npm run format && npm run lint && npm run build",
+    "publish:npm": "npm publish --access public",
+    "publish:pnpm": "pnpm publish --access public",
+    "version:patch": "npm version patch",
+    "version:minor": "npm version minor",
+    "version:major": "npm version major",
+    "test": "jest"
   },
   "keywords": [
     "api",
@@ -29,38 +46,48 @@
       "prettier --write"
     ]
   },
-
-
-   "repository": {
+  "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/your-repo.git"
+    "url": "https://github.com/NexGenStudioDev/FastKit"
   },
-
   "bugs": {
-    "url": "https://github.com/yourusername/your-repo/issues"
+    "url": "https://github.com/NexGenStudioDev/FastKit/issues"
   },
-
-  "homepage": "https://github.com/yourusername/your-repo#readme",
+  "homepage": "https://github.com/NexGenStudioDev/FastKit#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "packageManager": "pnpm@10.12.1",
   "devDependencies": {
+    "@babel/core": "^7.27.7",
+    "@babel/preset-env": "^7.27.2",
     "@eslint/js": "^9.29.0",
+    "@jest/globals": "^30.0.3",
     "@types/express": "^5.0.3",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.0.4",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "@typescript-eslint/parser": "^8.35.0",
+    "babel-jest": "^30.0.2",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
     "globals": "^16.2.0",
     "husky": "^9.1.7",
     "i": "^0.3.7",
+    "jest": "^30.0.3",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.4.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.0"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "@types/dotenv": "^8.2.3",
+    "dotenv": "^16.6.0",
+    "express": "^5.1.0",
+    "zod": "^3.25.67"
   }
 }
