@@ -12,7 +12,7 @@ export const hooks = {
       preferWorkspacePackages: true,
       sharedWorkspaceLockfile: true,
       publishBranch: 'master',
-      gitChecks: false,
+      gitChecks: true,
     }
   },
 }

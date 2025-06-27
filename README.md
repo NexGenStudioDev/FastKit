@@ -18,20 +18,20 @@ This library helps you build clean, maintainable APIs by offering ready-to-use, 
 
 ```bash
 # Using npm
-npm install @abhishek-nexgen-dev/fastkit
+npm install @nexgenstudiodev/fastkit
 
 # Using pnpm
-pnpm add @abhishek-nexgen-dev/fastkit
+pnpm add @nexgenstudiodev/fastkit
 
 # Using yarn
-yarn add @abhishek-nexgen-dev/fastkit
+yarn add @nexgenstudiodev/fastkit
 ```
 
 ## 🔧 Quick Start
 
 ```typescript
-import { FastKit } from '@abhishek-nexgen-dev/fastkit';
-import { loadFastKitConfig } from '@abhishek-nexgen-dev/fastkit/config';
+import { FastKit } from '@nexgenstudiodev/fastkit';
+import { loadFastKitConfig } from '@nexgenstudiodev/fastkit/config';
 import express from 'express';
 
 const app = express();
@@ -48,26 +48,10 @@ fastKit.use('/api/v1/auth', AuthFeature);
 app.listen(config.server.port, () => {
   console.log(`Server running on port ${config.server.port}`);
 });
+
 ```
 
-## ⚙️ Configuration Management
 
-FastKit includes a powerful configuration system that automatically manages your environment variables:
-
-```typescript
-import { FastKitConfig, FastKitConfigData } from '@abhishek-nexgen-dev/fastkit/config';
-
-// Create configuration
-const config: FastKitConfigData = {
-  server: { port: 3000, host: 'localhost', environment: 'development' },
-  database: { type: 'mongodb', url: 'mongodb://localhost:27017/myapp' },
-  jwt: { secret: 'your-secret-key', expiresIn: '24h' }
-};
-
-// Generate .env file
-const fastKitConfig = new FastKitConfig(config);
-await fastKitConfig.writeToEnv(true); // Creates .env with backup
-```
 
 > 📖 **Learn More**: Check out the [Configuration Documentation](CONFIGURATION.md) for detailed usage examples.
 
