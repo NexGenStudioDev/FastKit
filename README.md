@@ -31,8 +31,45 @@ yarn add @abhishek-nexgen-dev/fastkit
 
 ```typescript
 import { FastKit } from '@abhishek-nexgen-dev/fastkit';
+import { loadFastKitConfig } from '@abhishek-nexgen-dev/fastkit/config';
+import express from 'express';
 
+const app = express();
+
+// Load configuration from .env file
+const config = loadFastKitConfig();
+
+// Initialize FastKit with configuration
+const fastKit = new FastKit(app, config);
+
+// Initialize your features
+fastKit.use('/api/v1/auth', AuthFeature);
+
+app.listen(config.server.port, () => {
+  console.log(`Server running on port ${config.server.port}`);
+});
 ```
+
+## ⚙️ Configuration Management
+
+FastKit includes a powerful configuration system that automatically manages your environment variables:
+
+```typescript
+import { FastKitConfig, FastKitConfigData } from '@abhishek-nexgen-dev/fastkit/config';
+
+// Create configuration
+const config: FastKitConfigData = {
+  server: { port: 3000, host: 'localhost', environment: 'development' },
+  database: { type: 'mongodb', url: 'mongodb://localhost:27017/myapp' },
+  jwt: { secret: 'your-secret-key', expiresIn: '24h' }
+};
+
+// Generate .env file
+const fastKitConfig = new FastKitConfig(config);
+await fastKitConfig.writeToEnv(true); // Creates .env with backup
+```
+
+> 📖 **Learn More**: Check out the [Configuration Documentation](CONFIGURATION.md) for detailed usage examples.
 
 ## 🏗️ Project Structure
 
