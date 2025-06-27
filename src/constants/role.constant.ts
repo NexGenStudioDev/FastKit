@@ -1,7 +1,7 @@
 export const ROLES = {
-  ADMIN: 'admin',
-  STUDENT: 'student',
-  USER: 'user',
+  ADMIN: 'admin',     // Full administrative privileges
+  STUDENT: 'student', // Standard student privileges
+  BASIC: 'user',      // Basic, non-privileged user
 } as const;
 
 export const ROLE_ERRORS = {
