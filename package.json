@@ -1,0 +1,66 @@
+{
+  "name": "FastKi",
+  "version": "1.0.0",
+  "description": "A modular, class-based toolkit for fast API development with TypeScript and Express.",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "start:dev": "ts-node-dev --respawn --transpile-only src/FastKit.ts",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,json,md}'",
+    "prepublishOnly": "pnpm run lint && pnpm run build"
+  },
+  "keywords": [
+    "api",
+    "typescript",
+    "auth",
+    "utils",
+    "class-based",
+    "modular",
+    "toolkit",
+    "headless",
+    "nodejs"
+  ],
+  "author": "Abhishek Kumar <abhishek.nexgen.dev@gmail.com>",
+  "license": "MIT",
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+
+
+   "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/your-repo.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/yourusername/your-repo/issues"
+  },
+
+  "homepage": "https://github.com/yourusername/your-repo#readme",
+  "packageManager": "pnpm@10.12.1",
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.4",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
+    "eslint": "^9.29.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "globals": "^16.2.0",
+    "husky": "^9.1.7",
+    "i": "^0.3.7",
+    "lint-staged": "^16.1.2",
+    "prettier": "^3.6.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
