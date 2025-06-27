@@ -8,9 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@jest/globals':
-        specifier: ^30.0.3
-        version: 30.0.3
       '@types/dotenv':
         specifier: ^8.2.3
         version: 8.2.3
@@ -20,9 +17,6 @@ importers:
       express:
         specifier: ^5.1.0
         version: 5.1.0
-      jest:
-        specifier: ^30.0.3
-        version: 30.0.3(@types/node@24.0.4)(ts-node@10.9.2(@types/node@24.0.4)(typescript@5.8.3))
       zod:
         specifier: ^3.25.67
         version: 3.25.67
@@ -36,9 +30,15 @@ importers:
       '@eslint/js':
         specifier: ^9.29.0
         version: 9.29.0
+      '@jest/globals':
+        specifier: ^30.0.3
+        version: 30.0.3
       '@types/express':
         specifier: ^5.0.3
         version: 5.0.3
+      '@types/jest':
+        specifier: ^30.0.0
+        version: 30.0.0
       '@types/node':
         specifier: ^24.0.4
         version: 24.0.4
@@ -69,6 +69,9 @@ importers:
       i:
         specifier: ^0.3.7
         version: 0.3.7
+      jest:
+        specifier: ^30.0.3
+        version: 30.0.3(@types/node@24.0.4)(ts-node@10.9.2(@types/node@24.0.4)(typescript@5.8.3))
       lint-staged:
         specifier: ^16.1.2
         version: 16.1.2
@@ -953,6 +956,9 @@ packages:
 
   '@types/istanbul-reports@3.0.4':
     resolution: {integrity: sha512-pk2B1NWalF9toCRu6gjBzR69syFjP4Od8WRAX+0mmf9lAjCRicLOWc+ZrxZHx/0XRjotgkF9t6iaMJ+aXcOdZQ==}
+
+  '@types/jest@30.0.0':
+    resolution: {integrity: sha512-XTYugzhuwqWjws0CVz8QpM36+T+Dz5mTEBKhNs/esGLnCIlGdRy+Dq78NRjd7ls7r8BC8ZRMOrKlkO1hU0JOwA==}
 
   '@types/json-schema@7.0.15':
     resolution: {integrity: sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==}
@@ -3988,6 +3994,11 @@ snapshots:
   '@types/istanbul-reports@3.0.4':
     dependencies:
       '@types/istanbul-lib-report': 3.0.3
+
+  '@types/jest@30.0.0':
+    dependencies:
+      expect: 30.0.3
+      pretty-format: 30.0.2
 
   '@types/json-schema@7.0.15': {}
 

@@ -4,18 +4,38 @@ export interface EnvType {
   HOST: string;
   NODE_ENV: 'development' | 'production' | 'test' | 'staging';
   ENVIRONMENT: 'development' | 'production' | 'test' | 'staging';
+  SERVER_TIMEOUT?: number;
+  SERVER_KEEP_ALIVE?: boolean;
+  SERVER_BODY_LIMIT?: string;
+  SERVER_TRUST_PROXY?: boolean;
 
   // Database
   DATABASE_TYPE: 'mongodb' | 'mysql' | 'postgresql' | 'sqlite' | 'redis';
   DATABASE_URL: string;
+  DATABASE_HOST?: string;
+  DATABASE_PORT?: number;
+  DATABASE_USERNAME?: string;
+  DATABASE_PASSWORD?: string;
+  DATABASE_NAME?: string;
+  DATABASE_SSL?: boolean;
+  DATABASE_POOL_SIZE?: number;
 
   // JWT
   JWT_SECRET: string;
   JWT_EXPIRES_IN?: string;
-  JWT_ALGORITHM?: 'HS256' | 'HS384' | 'HS512' | 'RS256' | 'RS384' | 'RS512' | 'ES256' | 'ES384' | 'ES512';
+  JWT_ALGORITHM?:
+    | 'HS256'
+    | 'HS384'
+    | 'HS512'
+    | 'RS256'
+    | 'RS384'
+    | 'RS512'
+    | 'ES256'
+    | 'ES384'
+    | 'ES512';
 
   // CORS
-  CORS_ORIGIN: string | boolean;
+  CORS_ORIGIN?: string | boolean;
   CORS_METHODS?: string;
   CORS_ALLOWED_HEADERS?: string;
   CORS_CREDENTIALS?: boolean;

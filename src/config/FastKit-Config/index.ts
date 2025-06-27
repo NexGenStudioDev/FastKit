@@ -40,11 +40,7 @@ export {
   isJWTConfig,
 } from './config.validation';
 
-
 export const generateSampleEnv = (filePath?: string) => FastKitConfig.generateSampleEnv(filePath);
-
-
-
 
 // Re-export common schemas for advanced usage
 export {

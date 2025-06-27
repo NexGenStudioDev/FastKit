@@ -1,8 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-
-
 /**
  * Builds the demo content for .env with comments
  */
@@ -17,8 +15,8 @@ function buildDemoEnv(): string {
   lines.push('# ➤ Created on: ' + new Date().toISOString());
   lines.push('#');
   lines.push('# This file contains example environment variables for development.');
- lines.push('# Please modify these values as needed for your local setup.');
-
+  lines.push('# Please modify these values as needed for your local setup.');
+  lines.push('');
 
   // Server
   lines.push('# ----------------------------');
@@ -36,6 +34,11 @@ function buildDemoEnv(): string {
   lines.push('# ----------------------------');
   lines.push('DATABASE_TYPE=mongodb');
   lines.push('DATABASE_URL=mongodb://localhost:27017/fastkit');
+  lines.push('DATABASE_HOST=localhost');
+  lines.push('DATABASE_PORT=27017');
+  lines.push('DATABASE_USERNAME=your-db-username');
+  lines.push('DATABASE_PASSWORD=your-db-password');
+  lines.push('DATABASE_NAME=fastkit');
   lines.push('');
 
   // JWT
@@ -93,9 +96,6 @@ function buildDemoEnv(): string {
   return lines.join('\n');
 }
 
-
-
-
 /**
  * Ensure `.env` exists, create with demo content if missing,
  * then generate `.env.production` and `.env.test`.
@@ -121,5 +121,3 @@ export function setupEnvFiles(): void {
   fs.writeFileSync(testEnv, content, { encoding: 'utf8' });
   console.log(`✅ Generated .env.production and .env.test`);
 }
-
-

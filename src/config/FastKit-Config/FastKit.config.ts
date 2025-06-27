@@ -1,4 +1,89 @@
-# ===============================================================
+import { config } from 'dotenv';
+import * as fs from 'fs';
+import * as path from 'path';
+config({ path: path.join(process.cwd(), '.env') });
+
+import { validateEnvData } from './config.validation';
+import type { FastKitConfigData } from './config.types';
+import { EnvConstants } from '../../constant/env.constant';
+
+export class FastKitConfig {
+  private config!: FastKitConfigData;
+  private envFilePath: string;
+
+  constructor(envPath?: string) {
+    this.envFilePath = envPath || path.join(process.cwd(), '.env');
+  }
+
+  /**
+   * Create a new FastKitConfig instance and validate current environment
+   */
+  public static validateEnv(): { isValid: boolean; errors: string[] } {
+    try {
+      const config = validateEnvData(EnvConstants);
+
+      return {
+        isValid: config.isValid,
+        errors: config.errors,
+      };
+    } catch (error) {
+      return {
+        isValid: false,
+        errors: [error instanceof Error ? error.message : String(error)],
+      };
+    }
+  }
+
+  private envValidate(): { isValid: boolean; errors: string[] } {
+    try {
+      const config = validateEnvData(EnvConstants);
+      console.log('✅ Environment variables loaded and validated successfully', config);
+
+      this.config = config.config!;
+      return {
+        isValid: config.isValid,
+        errors: config.errors,
+      };
+    } catch (error) {
+      return {
+        isValid: false,
+        errors: [error instanceof Error ? error.message : String(error)],
+      };
+    }
+  }
+
+  /**
+   * Update configuration with new values
+   */
+  /**
+   * Get current configuration
+   */
+  public getConfig(): FastKitConfigData {
+    return { ...this.config };
+  }
+
+  /**
+   * Update configuration with new values
+   */
+  public updateConfig(newConfig: Partial<FastKitConfigData>): void {
+    this.config = { ...this.config, ...newConfig };
+    this.envValidate();
+  }
+
+  /**
+   * Create a new FastKitConfig instance from environment variables
+   */
+  public static fromEnv(envPath?: string): FastKitConfig {
+    return new FastKitConfig(envPath);
+  }
+
+  /**
+   * Generate a sample .env file with default values
+   */
+  public static generateSampleEnv(filePath?: string): void {
+    const envPath = filePath || path.join(process.cwd(), '.env.example');
+
+    const sampleContent = `# ===============================================================
 # FastKit Environment Configuration
 # This file contains sample environment variables for FastKit
 # Copy this file to .env and modify the values as needed
@@ -103,3 +188,16 @@ JWT_ALGORITHM=HS256
 # APP_NAME=FastKit App
 # APP_VERSION=1.0.0
 # CUSTOM_DEBUG=true
+`;
+
+    try {
+      fs.writeFileSync(envPath, sampleContent, 'utf8');
+      console.log(`✅ Sample .env file generated: ${envPath}`);
+    } catch (error) {
+      console.error('❌ Failed to generate sample .env file:', error);
+      throw new Error(
+        `Failed to generate sample .env file: ${error instanceof Error ? error.message : error}`,
+      );
+    }
+  }
+}

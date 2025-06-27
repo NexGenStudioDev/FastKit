@@ -1,6 +1,5 @@
 // import { z } from 'zod';
 
-
 // export function validateDatabaseConfig(config: unknown): { isValid: boolean; errors: string[]; config?: DatabaseConfig } {
 //   try {
 //     const validatedConfig = databaseConfigSchema.parse(config);

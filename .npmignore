@@ -22,6 +22,8 @@ CHANGELOG.md
 # Git files
 .git/
 .gitignore
+.env
+Environment/
 
 # CI/CD
 .github/
