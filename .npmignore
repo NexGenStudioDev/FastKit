@@ -10,9 +10,7 @@ tsconfig*.json
 jest.config.*
 *.test.*
 *.spec.*
-__tests__/
-test/
-tests/
+
 
 # Documentation (except README)
 docs/
@@ -22,7 +20,6 @@ CHANGELOG.md
 # Git files
 .git/
 .gitignore
-.env
 Environment/
 
 # CI/CD

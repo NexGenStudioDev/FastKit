@@ -5,11 +5,10 @@ on:
     branches:
       - master
     tags:
-      - 'v*' # Optional: run on version tags like v1.0.0
+      - 'v*' # optional: publish on version tags like v1.0.0
 
 jobs:
   publish:
-    name: Publish to npm
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/tags/v')
 
@@ -17,11 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Use Node.js 18
+      - name: Setup Node.js 18
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          registry-url: 'https://registry.npmjs.org/'
+          registry-url: https://registry.npmjs.org/
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
@@ -37,16 +36,10 @@ jobs:
       # - name: Run tests (optional)
       #   run: pnpm test
 
-      - name: Authenticate with npm
+      - name: Authenticate to npm
         run: npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      # Optional: Authenticate with GitHub Packages
-      # - name: Authenticate with GitHub Packages
-      #   run: npm config set //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Publish to npm
-        run: pnpm publish --access public
+        run: pnpm publish --access public --no-git-checks
