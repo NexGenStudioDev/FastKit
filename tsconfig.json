@@ -9,6 +9,11 @@
     "strict": true,
     "skipLibCheck": true
   },
+ "paths": {
+  "@fastkit/constant": ["src/constant/FastKit.constant.ts"],
+  "@fastkit/setup": ["src/FastKit.ts"],
+
+},
   "include": [
     "src/**/*"
   ],
