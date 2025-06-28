@@ -19,10 +19,10 @@ A comprehensive configuration management system for FastKit that allows you to c
 ### Basic Usage
 
 ```typescript
-import { FastKitConfig, FastKitConfigData } from './config/FastKit.config';
+import { FastKitConfig, envType } from './config/FastKit.config';
 
 // Create configuration
-const config: FastKitConfigData = {
+const config: envType = {
   server: {
     port: 3000,
     host: 'localhost',
@@ -58,12 +58,12 @@ console.log('Server port:', envConfig.server.port);
 
 ## Configuration Interfaces
 
-### FastKitConfigData
+### envType
 
 The main configuration interface that defines all possible configuration options:
 
 ```typescript
-interface FastKitConfigData {
+interface envType {
   server: ServerConfig;      // Required: Server configuration
   database: DatabaseConfig; // Required: Database configuration  
   jwt: JWTConfig;           // Required: JWT configuration
@@ -156,7 +156,7 @@ interface EmailConfig {
 ### 1. Create Development Configuration
 
 ```typescript
-const devConfig: FastKitConfigData = {
+const devConfig: envType = {
   server: {
     port: 3000,
     host: 'localhost',
@@ -188,7 +188,7 @@ await config.writeToEnv();
 ### 2. Create Production Configuration
 
 ```typescript
-const prodConfig: FastKitConfigData = {
+const prodConfig: envType = {
   server: {
     port: parseInt(process.env.PORT || '8080'),
     host: '0.0.0.0',

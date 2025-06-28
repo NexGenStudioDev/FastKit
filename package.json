@@ -9,23 +9,23 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
     "clean": "rimraf dist",
-    "rebuild": "npm run clean && npm run build",
-    "rebuild:pnpm": "pnpm run clean && pnpm run build",
+    "build": "tsc && pnpm exec tsc-alias",
+    "rebuild": "pnpm run clean && pnpm run build",
     "lint": "eslint src/**/*.{ts,tsx}",
     "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "start:dev": "ts-node-dev --respawn --transpile-only src/FastKit.ts",
+    "start:dev": "ts-node -r tsconfig-paths/register src/FastKit.ts",
+    "start:test": "ts-node --transpile-only src/test.ts",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,json,md}'",
-    "prepublishOnly": "npm run format && npm run lint && npm run build",
+    "prepublishOnly": "pnpm run format && pnpm run lint && pnpm run build",
     "publish:npm": "npm publish --access public",
     "publish:pnpm": "pnpm publish --access public --no-git-checks",
     "version:patch": "npm version patch",
     "version:minor": "npm version minor",
-    "version:major": "npm version major",
-    "test": "jest"
+    "version:major": "npm version major"
   },
   "keywords": [
     "api",
@@ -81,6 +81,8 @@
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.0",
     "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.16",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.35.0"
   },
