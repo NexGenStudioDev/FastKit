@@ -104,7 +104,6 @@ function CreateFastKit_EnvFiles(): void {
   const cwd = process.cwd();
   const baseEnv = path.join(cwd, '.env.fastkit');
 
-
   // Step 1: create .env if it doesn't exist
   if (!fs.existsSync(baseEnv)) {
     const demoContent = buildDemoEnv();
@@ -113,12 +112,9 @@ function CreateFastKit_EnvFiles(): void {
   }
 
   // Step 2: read .env
- fs.readFileSync(baseEnv, 'utf8');
-
-
+  fs.readFileSync(baseEnv, 'utf8');
 
   console.log(`✅ Generated .env.production and .env.test`);
 }
 
 export { CreateFastKit_EnvFiles as setup_FastKit_EnvFiles };
-
