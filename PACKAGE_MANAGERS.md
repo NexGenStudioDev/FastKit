@@ -50,10 +50,21 @@ The following scripts are available via `npm run <script>` or `pnpm run <script>
 | `version:major`  | Bump major version using npm                         |
 
 
+### 📦 SETUP.md – NPM Token Authentication with .env and CLI
+
+
+#### Load the Token in CLI
+
+| Platform                | Set NPM_TOKEN Command                  | Check Authentication Command    | Purpose                     |
+|-------------------------|--------------------------------------|---------------------------------|-----------------------------|
+| **Windows (PowerShell)** | `$env:NPM_TOKEN="your-token"`         | `npm whoami`                    | Set token / Verify identity |
+| **macOS / Linux / WSL**  | `export NPM_TOKEN="your-token"`       | `npm whoami`                    | Set token / Verify identity |
+| **Cross-platform One-liner** | `NPM_TOKEN="your-token" npm publish` | `NPM_TOKEN="your-token" npm whoami` | Publish / Verify identity    |
+
+> **Note:** Replace `"your-token"` with your actual NPM token. These commands temporarily set the token only for the current shell session. Avoid exposing your token in shared or public environments.
 
 
 ### 🚀 Publishing Workflow
-
 
 #### Using npm
 
@@ -115,7 +126,7 @@ If you're working on a new feature or a major update and want users to test it *
    ```bash
    npm run publish:npm -- --tag beta
    ```
-   
+
    This way, your beta version is available for testing, but users installing your package normally will still get the stable latest version.
 
 
