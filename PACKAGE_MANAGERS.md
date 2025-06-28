@@ -79,9 +79,45 @@ npm run version:major
 
 5. Publish package:
 
-```bash
-npm run publish:npm
-```
+# 📦 Publishing and Installing npm Packages with Custom Tags
+
+When you publish a package to npm, each version **must have a version number higher than all previously published versions**. This helps npm identify the newest version.
+
+If you try to publish a version that is **lower or the same** as a previously published version using the default `latest` tag, npm will throw an error.
+
+---
+
+## Using Custom Tags to Avoid Errors
+
+To avoid this error, you can publish your package using a **different tag** instead of `latest`. Tags let you label versions differently, such as `beta`, `next`, or `dev`.
+
+---
+
+## Example: Publishing a Beta Version
+
+If you're working on a new feature or a major update and want users to test it **without affecting the stable release**, you can publish it under a `beta` tag.
+
+### Steps:
+
+1. **Update the Version**  
+   Increment your package’s version number to indicate it’s a beta release.  
+   For example, if your current version is `1.0.0`, you might update it to `1.1.0-beta.0`.
+
+2. **Publish with a Custom Tag**  
+   Run the following command to publish your package under the `beta` tag:
+
+   ```bash
+   npm publish --tag beta
+   ```
+
+   Or if you use an npm script like publish:npm:
+
+   ```bash
+   npm run publish:npm -- --tag beta
+   ```
+   
+   This way, your beta version is available for testing, but users installing your package normally will still get the stable latest version.
+
 
 ### Using pnpm
 1. Make your changes
@@ -100,9 +136,9 @@ npm run publish:npm
 4. Bump version (choose one):
 
 ````bash
-npm run version:patch
-npm run version:minor
-npm run version:major
+npm run version:patch  # Small bugfixes, no new features
+npm run version:minor  # New features, no breaking changes
+npm run version:major  # 	Breaking changes, major updates
 ````
 
 5. Publish:

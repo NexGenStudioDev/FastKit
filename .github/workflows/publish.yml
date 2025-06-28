@@ -5,7 +5,7 @@ on:
     branches:
       - master
     tags:
-      - 'v*' # optional: publish on version tags like v1.0.0
+      - 'v*'
 
 jobs:
   publish:
@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
@@ -33,13 +33,15 @@ jobs:
       - name: Build package
         run: pnpm build
 
-      # - name: Run tests (optional)
-      #   run: pnpm test
-
       - name: Authenticate to npm
-        run: npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
         env:
+          # Required so setup-node writes correct .npmrc
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN}" >> ~/.npmrc
 
       - name: Publish to npm
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: pnpm publish --access public --no-git-checks
