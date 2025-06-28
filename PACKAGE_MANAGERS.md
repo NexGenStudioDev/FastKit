@@ -170,6 +170,26 @@ pnpm run publish:pnpm
 
 ---
 
+
+
+# Version & Tag Management for `@nexgenstudiodev/fastkit`
+
+| Topic                       | Command / Info                                              | Description                                   |
+|-----------------------------|------------------------------------------------------------|-----------------------------------------------|
+| **View all tags**            | `npm dist-tag ls @nexgenstudiodev/fastkit`                 | List all tags and their versions               |
+| **Set latest tag version**   | `npm dist-tag add @nexgenstudiodev/fastkit@1.1.3 latest`   | Point `latest` tag to version `1.1.3`          |
+| **Tag a version as beta**    | `npm dist-tag add @nexgenstudiodev/fastkit@2.0.0 beta`     | Mark version `2.0.0` as `beta`                 |
+| **Install latest version**   | `npm install @nexgenstudiodev/fastkit`                      | Install version tagged `latest`                 |
+| **Install specific version** | `npm install @nexgenstudiodev/fastkit@1.1.3`                | Install exact version `1.1.3`                   |
+| **Install tagged version**   | `npm install @nexgenstudiodev/fastkit@beta`                 | Install version tagged `beta`                   |
+| **Publish with tag**         | `npm publish --tag latest` or `npm publish --tag beta`      | Publish package with specified tag              |
+| **Clear npm cache**          | `npm cache clean --force`                                   | Fix cache issues when updates don’t appear     |
+
+---
+
+
+
+
 ## ✅ Best Practices
 
 - Use a single package manager throughout your project  
