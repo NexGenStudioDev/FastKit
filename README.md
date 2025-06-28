@@ -1,18 +1,48 @@
-# FastKit
+# 🚀 FastKit – Modular, Scalable API Toolkit with TypeScript + Express
 
-A modular, class-based toolkit for fast API development using TypeScript and Express.
+FastKit is a **developer-first**, **class-based**, and **plug-and-play** toolkit built on top of Express and TypeScript to help you build APIs faster — with clean structure, reusable logic, and zero boilerplate.
 
-This library helps you build clean, maintainable APIs by offering ready-to-use, feature-specific classes (like Auth, User, etc.) with built-in versioning support. Define your own routes while leveraging reusable business logic, validators, services, and more — all organized for scalability and long-term maintenance.
+✅ You can use `fastKit.get()`, `post()`, `put()`, `delete()` for defining routes  
+✅ All services, controllers, middlewares, and utilities are modular and importable  
+✅ No framework lock-in — write your own logic, inject nothing
 
-## 🚀 Features
+---
 
-- **Modular Architecture**: Build APIs with feature-specific modules
-- **Class-based Design**: Clean, object-oriented approach to API development
-- **Built-in Versioning**: Support for API versioning out of the box
-- **TypeScript First**: Full TypeScript support with type safety
-- **Express Integration**: Built on top of the reliable Express.js framework
-- **Reusable Components**: Pre-built validators, services, and controllers
-- **Scalable Structure**: Organized for long-term maintenance and growth
+## 🎯 Why Use FastKit?
+
+- 🧱 **Clean Architecture** – Organize your features like `Auth`, `Todo`, `Email`, etc.
+- 🔁 **Reusable Everything** – Use any controller, validator, service, or utility anywhere
+- 🧩 **Modular Setup** – Easily extend with your own modules
+- 🧠 **Zero Magic** – No decorators, no complex DI, no auto-binding
+- ⚡ **TypeScript First** – Type-safe from top to bottom
+- 🌍 **Plug-and-Play** – Use just the parts you need
+
+
+
+
+## 🗂️ Folder Structure
+
+```text
+src/
+├── server.ts                 # Create express app and FastKit instance
+├── fastkit.ts                # The FastKit core class
+├── config/
+│   └── fastkit.config.ts     # Global config
+├── utils/
+│   └── SendResponse.ts       # Standard response wrapper
+├── middlewares/
+│   └── verifyToken.ts        # JWT middleware
+│   └── validateBody.ts       # Schema validation middleware
+├── services/
+│   └── email/v1/Email.service.ts
+├── features/
+│   └── Auth/v1/
+│       ├── Auth.controller.ts
+│       ├── Auth.service.ts
+│       ├── Auth.validators.ts
+
+```
+
 
 ## 📦 Installation
 
@@ -27,164 +57,134 @@ pnpm add @nexgenstudiodev/fastkit
 yarn add @nexgenstudiodev/fastkit
 ```
 
-## 🔧 Quick Start
 
-```typescript
-import { FastKit } from '@nexgenstudiodev/fastkit';
-import { loadFastKitConfig } from '@nexgenstudiodev/fastkit/config';
+## 🛠️ Getting Started
+
+###  1. Create FastKit App
+
+````ts
+// server.ts
 import express from 'express';
+import { FastKit } from './fastkit';
+import { loadFastKitConfig } from './config/fastkit.config';
 
 const app = express();
-
-// Load configuration from .env file
 const config = loadFastKitConfig();
 
-// Initialize FastKit with configuration
 const fastKit = new FastKit(app, config);
 
-// Initialize your features
-fastKit.use('/api/v1/auth', AuthFeature);
+// Your routes
+import './apiRoutes';
 
-app.listen(config.server.port, () => {
-  console.log(`Server running on port ${config.server.port}`);
+app.listen(3000, () => {
+  console.log('🚀 Server is running on http://localhost:3000');
 });
 
-```
+
+````
+
+
+### 2. Define Routes Anywhere Using `fastKit.get()` / `post()` / `use()`
+````ts
+
+// apiRoutes.ts
+import { fastKit } from './fastkit';
+import { authController } from './features/Auth/v1/Auth.controller';
+import { verifyToken } from './middlewares/verifyToken';
+import { SendResponse } from './utils/SendResponse';
+
+fastKit.get('/ping', (req, res) => {
+  SendResponse.success(res, 'Pong!');
+});
+
+fastKit.post('/auth/signup', authController.signup);
+fastKit.get('/auth/me', verifyToken, authController.getProfile);
 
 
 
-> 📖 **Learn More**: Check out the [Configuration Documentation](CONFIGURATION.md) for detailed usage examples.
+````
 
-## 🏗️ Project Structure
 
-```
-src/
-├── features/
-│   ├── Auth/
-│   │   └── v1/
-│   │       ├── Auth.controller.ts
-│   │       ├── Auth.service.ts
-│   │       ├── Auth.validators.ts
-│   │       ├── Auth.constant.ts
-│   │       └── Auth.ts
-│   └── Ecommerce/
-│       └── v1/
-└── config/
-```
+### 🧱 Usage Examples
 
-## 📚 Core Concepts
+#### ✅ Use Controller Directly
 
-### Features
-Features are self-contained modules that encapsulate related functionality. Each feature includes:
+````ts
+fastKit.post('/auth/login', authController.login);
+````
 
-- **Controller**: Handle HTTP requests and responses
-- **Service**: Business logic and data processing
-- **Validators**: Input validation and sanitization
-- **Constants**: Feature-specific constants and configurations
+#### ✅ Use Service Independently
 
-### Versioning
-FastKit supports built-in API versioning, allowing you to maintain multiple versions of your API simultaneously:
 
-```typescript
-// v1 implementation
-features/Auth/v1/Auth.ts
+````ts
+import { EmailService } from './services/email/v1/Email.service';
 
-// v2 implementation (when needed)
-features/Auth/v2/Auth.ts
-```
+await EmailService.sendOtp(email);
 
-## 🛠️ Usage Examples
+````
 
-### Creating a Custom Feature
+#### ✅ Use Middleware Anywhere
 
-```typescript
-// features/User/v1/User.controller.ts
-export class UserController {
-  async getUser(req: Request, res: Response) {
-    // Controller logic
-  }
-  
-  async createUser(req: Request, res: Response) {
-    // Controller logic
-  }
-}
+````ts
+fastKit.get('/user', verifyToken, userController.getUserById);
+````
 
-// features/User/v1/User.service.ts
-export class UserService {
-  async findUser(id: string) {
-    // Service logic
-  }
-  
-  async createUser(userData: any) {
-    // Service logic
-  }
-}
+#### ✅ Use Utils Like SendResponse
 
-// features/User/v1/User.ts
-import { UserController } from './User.controller';
-import { UserService } from './User.service';
+````ts
+SendResponse.success(res, 'Your API works!');
+SendResponse.error(res, 'Something went wrong', 400);
+````
 
-export class UserFeature {
-  private controller: UserController;
-  private service: UserService;
-  
-  constructor() {
-    this.service = new UserService();
-    this.controller = new UserController();
-  }
-  
-  getRoutes() {
-    // Define your routes
-  }
-}
-```
+## 🧩 What You Can Build
 
-### Authentication Feature
+- Auth systems (JWT, OTP, social logins)  
+- Todo, Notes, Blog, Folder/File systems  
+- File Uploads & Content Management  
+- Payment integration (Stripe, Razorpay)  
+- Reminder & Notification system (NodeMailer, Cron)  
+- AI assistants via OpenAI API  
+- WebSocket / Realtime apps with Socket.io  
+- Admin panels with RBAC (roles/permissions)
 
-```typescript
-import { AuthFeature } from '@abhishek-nexgen-dev/fastkit';
+#### 🔌 Plugin-Friendly
 
-// Use the built-in Auth feature
-app.use('/api/v1/auth', AuthFeature.getRoutes());
-```
+You can export every module individually and use them in any project:
 
-## 🔒 Security Features
+````ts
+import { AuthController } from 'fastkit-auth';
+import { TodoController } from 'fastkit-todo';
 
-- Input validation and sanitization
-- Built-in authentication patterns
-- Security headers and middleware
-- Rate limiting support
+````
 
-## 🧪 Testing
+#### 🔐 Middleware Examples
 
-```bash
-# Run tests
-pnpm test
+- `verifyToken` – Protect routes using JWT  
+- `validateBody(schema)` – Validate input with Zod or Joi  
+- `allowRoles('admin', 'user')` – Role-based access control
 
-# Run tests in watch mode
-pnpm test:watch
+#### 📬 Email Service Examples
 
-# Run tests with coverage
-pnpm test:coverage
-```
+````ts
+EmailService.sendOtp(email, template);
+EmailService.sendCustom(subject, message, to);
+EmailService.sendReminder(userId, date, content);
 
-## 📖 Documentation
+````
 
-For detailed documentation, examples, and API reference, visit our [documentation site](https://github.com/NexGenStudioDev/FastKit#readme).
+## 📁 Folder Module Examples
 
-## 🤝 Contributing
+- Create Folder  
+- Create File Inside Folder (supports custom extensions)  
+- Delete Folder (with restriction middleware)  
+- Nested Folders support  
+- Folder Flags: `isLocked`, `isShared`, etc.
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+## 📡 WebSocket Support (Optional)
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+- Works with both HTTP and Socket.io  
+- Real-time APIs using FastKit + Socket.io events supported
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details.
 
 ## 👥 Authors
 
@@ -202,15 +202,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 - 🐛 Issues: [GitHub Issues](https://github.com/NexGenStudioDev/FastKit/issues)
 - 💬 Discussions: [GitHub Discussions](https://github.com/NexGenStudioDev/FastKit/discussions)
 
-## 🗺️ Roadmap
 
-- [ ] Plugin system for third-party integrations
-- [ ] GraphQL support
-- [ ] Database ORM integrations
-- [ ] Advanced caching mechanisms
-- [ ] Real-time features with WebSockets
-- [ ] CLI tool for project scaffolding
+## ❤️ Contributions Welcome
 
----
+Want to add more features or modules like:
 
-Made with ❤️ by [NexGen Studio Dev](https://github.com/NexGenStudioDev)
+- Blog/Post  
+- Cart  
+- Analytics  
+- AI Tools  
+- Chat  
+
+Create a PR or open an issue!
+
+## 🔖 License
+
+MIT © Abhishek Gupta
