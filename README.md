@@ -23,24 +23,16 @@ FastKit is a **developer-first**, **class-based**, and **plug-and-play** toolkit
 ## 🗂️ Folder Structure
 
 ```text
-src/
-├── server.ts                 # Create express app and FastKit instance
-├── fastkit.ts                # The FastKit core class
-├── config/
-│   └── fastkit.config.ts     # Global config
-├── utils/
-│   └── SendResponse.ts       # Standard response wrapper
-├── middlewares/
-│   └── verifyToken.ts        # JWT middleware
-│   └── validateBody.ts       # Schema validation middleware
-├── services/
-│   └── email/v1/Email.service.ts
-├── features/
-│   └── Auth/v1/
-│       ├── Auth.controller.ts
-│       ├── Auth.service.ts
-│       ├── Auth.validators.ts
-
+FastKit/
+├── package.json (root)
+├── pnpm-workspace.yaml
+└── src/
+     └── packages/
+            ├── fastkit
+            ├── fastkit-config
+            ├── fastkit-db-config
+            └── fastkit-auth
+    
 ```
 
 
@@ -56,6 +48,8 @@ pnpm add @nexgenstudiodev/fastkit
 # Using yarn
 yarn add @nexgenstudiodev/fastkit
 ```
+
+
 
 
 ## 🛠️ Getting Started
@@ -172,6 +166,9 @@ EmailService.sendReminder(userId, date, content);
 
 ````
 
+
+
+
 ## 📁 Folder Module Examples
 
 - Create Folder  
@@ -184,6 +181,31 @@ EmailService.sendReminder(userId, date, content);
 
 - Works with both HTTP and Socket.io  
 - Real-time APIs using FastKit + Socket.io events supported
+
+## 🧪 Troubleshooting
+
+#### 1. Missing TypeScript Config
+
+- ✅ Ensure all packages extend the root tsconfig.base.json:
+````json
+{
+  "extends": "../../tsconfig.base.json"
+}
+````
+#### 2. Publish Errors
+
+````bash
+npm version patch # Bump version first using:
+pnpm publish --tag beta # publish with a tag:
+
+````
+
+#### 3. Mixed Lockfiles
+
+````bash
+rm -rf node_modules pnpm-lock.yaml package-lock.json
+pnpm install
+````
 
 
 ## 👥 Authors

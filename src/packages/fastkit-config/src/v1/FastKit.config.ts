@@ -1,7 +1,6 @@
-import { config } from 'dotenv';
 import express, { Express, RequestHandler } from 'express';
 import * as path from 'path';
-config({ path: path.join(process.cwd(), '.env') });
+
 
 class FastKit {
   public expressApp: Express;

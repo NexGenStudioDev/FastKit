@@ -1,6 +1,14 @@
-# Ignore artifacts:
-build
-coverage
-node_modules
-dist
+# Ignore build output
+build/
+dist/
+
+# Ignore coverage reports
+coverage/
+
+# Ignore dependencies
+node_modules/
+
+# Ignore environment files
 .env
+.env.local
+.env.development.local

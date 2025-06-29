@@ -1,80 +1,36 @@
 {
   "name": "@nexgenstudiodev/fastkit",
-  "type": "commonjs",
-  "version": "1.0.2",
-  "description": "A modular, class-based toolkit for fast API development with TypeScript and Express.",
-  "main": "dist/FastKit.js",
-  "types": "dist/FastKit.d.ts",
-  "files": [
-    "dist"
+  "version": "1.0.0",
+  "private": true,
+  "description": "A modular monorepo for FastKit and related tools",
+  "packageManager": "pnpm@10.12.1",
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "tsc && pnpm exec tsc-alias",
-    "rebuild": "pnpm run clean && pnpm run build",
-    "lint": "eslint src/**/*.{ts,tsx}",
-    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "start:dev": "ts-node -r tsconfig-paths/register src/FastKit.ts",
-    "start:test": "ts-node --transpile-only src/test.ts",
-    "format": "prettier --write 'src/**/*.{ts,tsx,js,json,md}'",
-    "prepublishOnly": "pnpm run format && pnpm run lint && pnpm run build",
-    "publish:npm": "npm publish --access public",
-    "publish:pnpm": "pnpm publish --access public --no-git-checks",
-    "version:patch": "npm version patch",
-    "version:minor": "npm version minor",
-    "version:major": "npm version major"
+    "build": "pnpm -r run build",
+    "rebuild": "pnpm -r run clean && pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "lint:fix": "pnpm -r run lint:fix",
+    "format": "pnpm -r run format",
+    "test": "pnpm -r run test",
+    "test:watch": "pnpm -r run test:watch",
+    "test:coverage": "pnpm -r run test:coverage",
+    "sync:versions": "npx npm-check-updates --workspace --dep=prod --upgrade --filter /@nexgenstudiodev/*/",
+    "sync:dev-versions": "npx npm-check-updates --workspace --dep=dev --upgrade --filter /@nexgenstudiodev/*/",
+    "sync:all-versions": "pnpm run sync:versions && pnpm run sync:dev-versions",
+    "publish:all": "pnpm -r publish --access public --no-git-checks",
+    "postinstall": "pnpm -r run build"
   },
-  "keywords": [
-    "api",
-    "typescript",
-    "auth",
-    "utils",
-    "class-based",
-    "modular",
-    "toolkit",
-    "headless",
-    "nodejs"
-  ],
-  "author": "Abhishek Kumar <abhishek.nexgen.dev@gmail.com>",
-  "license": "MIT",
-  "lint-staged": {
-    "src/**/*.{ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NexGenStudioDev/FastKit"
-  },
-  "bugs": {
-    "url": "https://github.com/NexGenStudioDev/FastKit/issues"
-  },
-  "homepage": "https://github.com/NexGenStudioDev/FastKit#readme",
-  "publishConfig": {
-    "access": "public"
-  },
-  "packageManager": "pnpm@10.12.1",
   "devDependencies": {
-    "@babel/core": "^7.27.7",
-    "@babel/preset-env": "^7.27.2",
-    "@eslint/js": "^9.29.0",
-    "@jest/globals": "^30.0.3",
-    "@types/express": "^5.0.3",
-    "@types/jest": "^30.0.0",
-    "@types/node": "^24.0.4",
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "@typescript-eslint/parser": "^8.35.0",
-    "babel-jest": "^30.0.2",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.0.4",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
-    "globals": "^16.2.0",
-    "husky": "^9.1.7",
-    "i": "^0.3.7",
     "jest": "^30.0.3",
     "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
@@ -83,13 +39,15 @@
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.16",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.8.3",
-    "typescript-eslint": "^8.35.0"
+    "typescript": "^5.8.3"
   },
-  "dependencies": {
-    "@types/dotenv": "^8.2.3",
-    "dotenv": "^16.6.0",
-    "express": "^5.1.0",
-    "zod": "^3.25.67"
+  "lint-staged": {
+    "packages/**/*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "pnpm": ">=8.0.0"
   }
 }

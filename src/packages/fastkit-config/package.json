@@ -1,0 +1,22 @@
+{
+  "name": "@nexgenstudiodev/fastkit-config",
+  "version": "1.0.0",
+  "description": "Config module for FastKit",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@nexgenstudiodev/fastkit": "^1.0.2",
+    "@nexgenstudiodev/fastkit-dbconfig": "workspace:*",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3"
+  }
+}

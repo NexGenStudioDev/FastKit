@@ -1,5 +1,5 @@
-import { DatabaseConfig } from '../db/Db.type'; // Ensure this path is correct
 
+import { DatabaseConfig } from '@nexgenstudiodev/fastkit-dbconfig';
 // =================== TYPES & INTERFACES ===================
 
 export type JWTAlgorithmType =
