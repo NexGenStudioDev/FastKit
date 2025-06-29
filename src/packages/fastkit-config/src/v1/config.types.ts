@@ -1,10 +1,26 @@
-import { DatabaseConfig } from '../db/Db.type'; // Ensure this path is correct
 
 // =================== TYPES & INTERFACES ===================
 
+// Database types (copied from db-config package to avoid circular imports)
+export type DatabaseType = 'mongodb' | 'mysql' | 'postgresql' | 'sqlite' | 'redis';
+
+export interface DatabaseConfig {
+  type: DatabaseType;
+  host?: string;
+  port?: number;
+  username?: string;
+  password?: string;
+  databaseName?: string;
+  url?: string;
+  poolSize?: number;
+  connectionTimeout?: number;
+  ssl?: boolean;
+  options?: Record<string, unknown>;
+}
+
 export type JWTAlgorithmType =
   | 'HS256'
-  | 'HS384'
+  | 'HS384'     
   | 'HS512'
   | 'RS256'
   | 'RS384'

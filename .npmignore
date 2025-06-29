@@ -3,7 +3,7 @@ src/
 *.ts
 !*.d.ts
 
-# Development files
+# Development config files
 .eslintrc.*
 .prettierrc*
 tsconfig*.json
@@ -11,23 +11,22 @@ jest.config.*
 *.test.*
 *.spec.*
 
-
 # Documentation (except README)
 docs/
 CONTRIBUTING.md
 CHANGELOG.md
 
-# Git files
+# Git files and folders
 .git/
 .gitignore
 Environment/
 
-# CI/CD
+# CI/CD config
 .github/
 .travis.yml
 .circleci/
 
-# Editor files
+# Editor and IDE files
 .vscode/
 .idea/
 *.sublime-*
@@ -36,7 +35,7 @@ Environment/
 .DS_Store
 Thumbs.db
 
-# Package manager
+# Package manager lock files and folders
 pnpm-lock.yaml
 yarn.lock
 .pnp.*
@@ -46,23 +45,23 @@ yarn.lock
 logs/
 *.log
 
-# Runtime data
+# Runtime data files
 pids/
 *.pid
 *.seed
 *.pid.lock
 
-# Coverage
+# Coverage reports
 coverage/
 .nyc_output/
 
 # Dependencies
 node_modules/
 
-# Build tools
+# Build tools and cache
 .tsbuildinfo
 
-# Temporary files
+# Temporary files and folders
 tmp/
 temp/
 

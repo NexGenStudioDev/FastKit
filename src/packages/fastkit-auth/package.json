@@ -1,0 +1,23 @@
+{
+  "name": "@nexgenstudiodev/fastkit-auth",
+  "version": "1.0.0",
+  "description": "Auth module for FastKit",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,json}'",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.3",
+    "express": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

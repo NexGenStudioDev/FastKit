@@ -29,39 +29,37 @@ yarn add @nexgenstudiodev/fastkit
 
 The following scripts are available via `npm run <script>` or `pnpm run <script>`:
 
-| Script           | Description                                        |
-|------------------|--------------------------------------------------|
-| `build`          | Compile TypeScript to JavaScript using `tsc`    |
-| `clean`          | Delete the `dist` directory using `rimraf`      |
-| `rebuild`        | Clean and then build (npm version)                |
-| `rebuild:pnpm`   | Clean and then build (pnpm version)               |
-| `lint`           | Run ESLint on all `.ts` and `.tsx` files in `src/` |
-| `lint:fix`       | Automatically fix linting issues                   |
-| `test`           | Run tests with Jest                                |
-| `test:watch`     | Watch files and re-run tests on change             |
-| `test:coverage`  | Run tests and generate coverage report             |
-| `start:dev`      | Start development mode using `ts-node-dev`         |
-| `format`         | Format all supported files in `src/` using Prettier |
-| `prepublishOnly` | Format, lint, and build before publishing (npm lifecycle hook) |
-| `publish:npm`    | Publish the package to npm (with public access)     |
-| `publish:pnpm`   | Publish the package using pnpm (skip git checks)    |
-| `version:patch`  | Bump patch version using npm                         |
-| `version:minor`  | Bump minor version using npm                         |
-| `version:major`  | Bump major version using npm                         |
+## 🔧 Development Scripts
+
+The following scripts are available via `npm run <script>` or `pnpm run <script>`:
+
+
 
 
 ### 📦 SETUP.md – NPM Token Authentication with .env and CLI
 
 
-#### Load the Token in CLI
+| Script             | Description                                                      |
+|--------------------|------------------------------------------------------------------|
+| **build**          | Compile TypeScript using `tsc` and fix paths using `tsc-alias`  |
+| **clean**          | Delete the `dist` directory using `rimraf`                      |
+| **rebuild**        | Clean and then build the project                                 |
+| **lint**           | Run ESLint on all `.ts` and `.tsx` files in `src/`              |
+| **lint:fix**       | Automatically fix lint issues                                    |
+| **format**         | Format source files using Prettier                               |
+| **test**           | Run all tests using Jest                                         |
+| **test:watch**     | Watch and re-run tests on file changes                           |
+| **test:coverage**  | Generate code coverage report                                    |
+| **start:dev**      | Start dev server using `ts-node-dev`                             |
+| **prepublishOnly** | Hook to format, lint, and build before publishing                |
+| **publish:npm**    | Publish package to npm using npm CLI                             |
+| **publish:pnpm**   | Publish package to npm using pnpm (skip git checks)              |
+| **version:patch**  | Bump patch version                                               |
+| **version:minor**  | Bump minor version                                               |
+| **version:major**  | Bump major version                                               |
+| **add**            | *(Your custom script — specify its function if needed)*          |
 
-| Platform                | Set NPM_TOKEN Command                  | Check Authentication Command    | Purpose                     |
-|-------------------------|--------------------------------------|---------------------------------|-----------------------------|
-| **Windows (PowerShell)** | `$env:NPM_TOKEN="your-token"`         | `npm whoami`                    | Set token / Verify identity |
-| **macOS / Linux / WSL**  | `export NPM_TOKEN="your-token"`       | `npm whoami`                    | Set token / Verify identity |
-| **Cross-platform One-liner** | `NPM_TOKEN="your-token" npm publish` | `NPM_TOKEN="your-token" npm whoami` | Publish / Verify identity    |
 
-> **Note:** Replace `"your-token"` with your actual NPM token. These commands temporarily set the token only for the current shell session. Avoid exposing your token in shared or public environments.
 
 
 ### 🚀 Publishing Workflow

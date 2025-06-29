@@ -1,0 +1,18 @@
+{
+  "name": "@nexgenstudiodev/fastkit-dbconfig",
+  "version": "1.0.0",
+  "description": "Data Base Config module for FastKit",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsc && tsc-alias",
+     "sync:workspace-versions": "node scripts/sync-workspace-versions.js",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,json}'",
+    "test": "jest"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
