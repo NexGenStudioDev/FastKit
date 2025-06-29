@@ -7,7 +7,20 @@ settings:
 importers:
 
   .:
+    dependencies:
+      dotenv:
+        specifier: ^16.4.5
+        version: 16.6.1
+      express:
+        specifier: ^5.1.0
+        version: 5.1.0
+      zod:
+        specifier: ^3.23.8
+        version: 3.25.67
     devDependencies:
+      '@types/express':
+        specifier: ^5.0.3
+        version: 5.0.3
       '@types/jest':
         specifier: ^30.0.0
         version: 30.0.0
@@ -59,9 +72,6 @@ importers:
 
   src/packages/fastkit-auth:
     dependencies:
-      '@nexgenstudiodev/fastkit':
-        specifier: ^1.0.2
-        version: 1.2.0
       '@types/express':
         specifier: ^5.0.3
         version: 5.0.3
@@ -71,12 +81,6 @@ importers:
 
   src/packages/fastkit-config:
     dependencies:
-      '@nexgenstudiodev/fastkit':
-        specifier: ^1.0.2
-        version: 1.2.0
-      '@nexgenstudiodev/fastkit-dbconfig':
-        specifier: workspace:*
-        version: link:../fastkit-db-config
       express:
         specifier: ^5.1.0
         version: 5.1.0
@@ -85,11 +89,7 @@ importers:
         specifier: ^5.0.3
         version: 5.0.3
 
-  src/packages/fastkit-db-config:
-    dependencies:
-      '@nexgenstudiodev/fastkit-dbconfig':
-        specifier: workspace:*
-        version: 'link:'
+  src/packages/fastkit-db-config: {}
 
 packages:
 
@@ -459,9 +459,6 @@ packages:
   '@napi-rs/wasm-runtime@0.2.11':
     resolution: {integrity: sha512-9DPkXtvHydrcOsopiYpUgPHpmj0HWZKMUnL2dZqpvC42lsratuBG06V5ipyno0fUek5VlFsNQ+AcFATSrJXgMA==}
 
-  '@nexgenstudiodev/fastkit@1.2.0':
-    resolution: {integrity: sha512-Bhig2O1Gk98vRncNvjq1WVKbddozd2Lt0evnDx5fl+9thkhpycYgRV5l/BRXFORBXJsphCqAg71mwE5FQQDGhQ==}
-
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -523,10 +520,6 @@ packages:
 
   '@types/connect@3.4.38':
     resolution: {integrity: sha512-K6uROf1LD88uDQqJCktA4yzL1YYAK6NgfsI0v/mTgyPKWsX1CnJ0XPSDhViejru1GcRkLWb8RlzFYJRqGUbaug==}
-
-  '@types/dotenv@8.2.3':
-    resolution: {integrity: sha512-g2FXjlDX/cYuc5CiQvyU/6kkbP1JtmGzh0obW50zD7OKeILVL0NSpPWLXVfqoAGQjom2/SLLx9zHq0KXvD6mbw==}
-    deprecated: This is a stub types definition. dotenv provides its own type definitions, so you do not need this installed.
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
@@ -2917,15 +2910,6 @@ snapshots:
       '@tybys/wasm-util': 0.9.0
     optional: true
 
-  '@nexgenstudiodev/fastkit@1.2.0':
-    dependencies:
-      '@types/dotenv': 8.2.3
-      dotenv: 16.6.1
-      express: 5.1.0
-      zod: 3.25.67
-    transitivePeerDependencies:
-      - supports-color
-
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
       '@nodelib/fs.stat': 2.0.5
@@ -2995,10 +2979,6 @@ snapshots:
   '@types/connect@3.4.38':
     dependencies:
       '@types/node': 24.0.7
-
-  '@types/dotenv@8.2.3':
-    dependencies:
-      dotenv: 16.6.1
 
   '@types/estree@1.0.8': {}
 

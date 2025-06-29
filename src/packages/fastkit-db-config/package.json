@@ -12,7 +12,7 @@
     "format": "prettier --write 'src/**/*.{ts,tsx,js,json}'",
     "test": "jest"
   },
-  "dependencies": {
-     "@nexgenstudiodev/fastkit-dbconfig": "workspace:*"
+  "publishConfig": {
+    "access": "public"
   }
 }

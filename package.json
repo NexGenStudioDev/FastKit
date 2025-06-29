@@ -1,15 +1,34 @@
 {
   "name": "@nexgenstudiodev/fastkit",
-  "version": "1.0.0",
-  "private": true,
-  "description": "A modular monorepo for FastKit and related tools",
+  "version": "2.1.0",
+  "description": "A comprehensive FastKit library with auth, database config, and utilities",
+  "main": "dist/FastKit.js",
+  "types": "dist/FastKit.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "fastkit",
+    "auth",
+    "database",
+    "config",
+    "utilities",
+    "typescript"
+  ],
+  "author": "NexGenStudioDev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nexgenstudiodev/fastkit.git"
+  },
   "packageManager": "pnpm@10.12.1",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "pnpm -r run build",
+    "build": "pnpm -r run build && tsc && tsc-alias",
+    "build:main": "tsc && tsc-alias",
     "rebuild": "pnpm -r run clean && pnpm -r run build",
     "lint": "pnpm -r run lint",
     "lint:fix": "pnpm -r run lint:fix",
@@ -23,11 +42,17 @@
     "publish:all": "pnpm -r publish --access public --no-git-checks",
     "postinstall": "pnpm -r run build"
   },
+  "dependencies": {
+    "express": "^5.1.0",
+    "zod": "^3.23.8",
+    "dotenv": "^16.4.5"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.35.0",
     "@typescript-eslint/parser": "^8.35.0",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.4",
+    "@types/express": "^5.0.3",
     "eslint": "^9.29.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-prettier": "^5.5.1",
