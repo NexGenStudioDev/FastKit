@@ -1,4 +1,6 @@
-export * as AuthConstant from '../src/v1/Auth.constant';
-export * as AuthService from '../src/v1/Auth.service';
-export * as AuthController from '../src/v1/Auth.controller';
-// export * as AuthValidator from '../src/v1/Auth.validators';
+import AuthConstant from './v1/Auth.constant';
+import AuthController from './v1/Auth.controller';
+import AuthService from './v1/Auth.service';
+
+
+export { AuthConstant, AuthController, AuthService };
