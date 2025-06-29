@@ -33,6 +33,12 @@ The following scripts are available via `npm run <script>` or `pnpm run <script>
 
 The following scripts are available via `npm run <script>` or `pnpm run <script>`:
 
+
+
+
+### 📦 SETUP.md – NPM Token Authentication with .env and CLI
+
+
 | Script             | Description                                                      |
 |--------------------|------------------------------------------------------------------|
 | **build**          | Compile TypeScript using `tsc` and fix paths using `tsc-alias`  |
@@ -54,16 +60,9 @@ The following scripts are available via `npm run <script>` or `pnpm run <script>
 | **add**            | *(Your custom script — specify its function if needed)*          |
 
 
-### 🎯 Filter Usage (Workspace Targeting)
 
-````bash
-pnpm build --filter @nexgenstudiodev/fastkit-config
-pnpm add -D @types/express --filter @nexgenstudiodev/fastkit-config
-
-````
 
 ### 🚀 Publishing Workflow
-
 
 #### Using npm
 
@@ -125,7 +124,7 @@ If you're working on a new feature or a major update and want users to test it *
    ```bash
    npm run publish:npm -- --tag beta
    ```
-   
+
    This way, your beta version is available for testing, but users installing your package normally will still get the stable latest version.
 
 
@@ -168,6 +167,26 @@ pnpm run publish:pnpm
 | `package-lock.json` | npm lockfile (auto-generated)   |
 
 ---
+
+
+
+# Version & Tag Management for `@nexgenstudiodev/fastkit`
+
+| Topic                       | Command / Info                                              | Description                                   |
+|-----------------------------|------------------------------------------------------------|-----------------------------------------------|
+| **View all tags**            | `npm dist-tag ls @nexgenstudiodev/fastkit`                 | List all tags and their versions               |
+| **Set latest tag version**   | `npm dist-tag add @nexgenstudiodev/fastkit@1.1.3 latest`   | Point `latest` tag to version `1.1.3`          |
+| **Tag a version as beta**    | `npm dist-tag add @nexgenstudiodev/fastkit@2.0.0 beta`     | Mark version `2.0.0` as `beta`                 |
+| **Install latest version**   | `npm install @nexgenstudiodev/fastkit`                      | Install version tagged `latest`                 |
+| **Install specific version** | `npm install @nexgenstudiodev/fastkit@1.1.3`                | Install exact version `1.1.3`                   |
+| **Install tagged version**   | `npm install @nexgenstudiodev/fastkit@beta`                 | Install version tagged `beta`                   |
+| **Publish with tag**         | `npm publish --tag latest` or `npm publish --tag beta`      | Publish package with specified tag              |
+| **Clear npm cache**          | `npm cache clean --force`                                   | Fix cache issues when updates don’t appear     |
+
+---
+
+
+
 
 ## ✅ Best Practices
 
