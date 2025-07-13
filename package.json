@@ -1,6 +1,5 @@
 {
   "name": "@nexgenstudiodev/fastkit",
-
   "type": "commonjs",
   "version": "1.2.0",
   "description": "A modular, class-based toolkit for fast API development with TypeScript and Express.",
@@ -9,17 +8,24 @@
   "files": [
     "dist"
   ],
-
   "scripts": {
-    "format": "prettier --write 'src/**/*.{ts,tsx,js,json,md}'",
-    "lint": "eslint src/**/*.{ts,tsx}",
-    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
-    "link": "npm link @nexgenstudiodev/fastkit",
-    "build": "tsc && pnpm exec tsc-alias", 
-    "link:manage": "ts-node src/script/manage-link.ts",
-    "manage": "ts-node src/script/index.ts"
+    "clean": "rimraf dist",
+    "build": "pnpm -r run build && tsc && tsc-alias",
+    "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --ignore-watch dist src/FastKit.ts",
+    "build:main": "tsc && tsc-alias",
+    "rebuild": "pnpm -r run clean && pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "lint:fix": "pnpm -r run lint:fix",
+    "format": "pnpm -r run format",
+    "test": "pnpm -r run test",
+    "test:watch": "pnpm -r run test:watch",
+    "test:coverage": "pnpm -r run test:coverage",
+    "sync:versions": "npx npm-check-updates --workspace --dep=prod --upgrade --filter /@nexgenstudiodev/*/",
+    "sync:dev-versions": "npx npm-check-updates --workspace --dep=dev --upgrade --filter /@nexgenstudiodev/*/",
+    "sync:all-versions": "pnpm run sync:versions && pnpm run sync:dev-versions",
+    "publish:all": "pnpm -r publish --access public --no-git-checks",
+    "postinstall": "pnpm -r run build"
   },
-
   "keywords": [
     "fastkit",
     "auth",
@@ -38,48 +44,17 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-    "clean": "rimraf dist",
-    "build": "pnpm -r run build && tsc && tsc-alias",
-    "build:main": "tsc && tsc-alias",
-    "rebuild": "pnpm -r run clean && pnpm -r run build",
-    "lint": "pnpm -r run lint",
-    "lint:fix": "pnpm -r run lint:fix",
-    "format": "pnpm -r run format",
-    "test": "pnpm -r run test",
-    "test:watch": "pnpm -r run test:watch",
-    "test:coverage": "pnpm -r run test:coverage",
-    "sync:versions": "npx npm-check-updates --workspace --dep=prod --upgrade --filter /@nexgenstudiodev/*/",
-    "sync:dev-versions": "npx npm-check-updates --workspace --dep=dev --upgrade --filter /@nexgenstudiodev/*/",
-    "sync:all-versions": "pnpm run sync:versions && pnpm run sync:dev-versions",
-    "publish:all": "pnpm -r publish --access public --no-git-checks",
-    "postinstall": "pnpm -r run build"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/FastKit.js",
-      "require": "./dist/FastKit.js",
-      "types": "./dist/FastKit.d.ts"
-    },
-    "./auth": {
-      "import": "./dist/packages/fastkit-auth/src/index.js",
-      "require": "./dist/packages/fastkit-auth/src/index.js",
-      "types": "./dist/packages/fastkit-auth/src/index.d.ts"
-    },
-    "./config": {
-      "import": "./dist/packages/fastkit-config/src/index.js",
-      "require": "./dist/packages/fastkit-config/src/index.js",
-      "types": "./dist/packages/fastkit-config/src/index.d.ts"
-    },
-    "./db": {
-      "import": "./dist/packages/fastkit-db-config/src/v1/index.js",
-      "require": "./dist/packages/fastkit-db-config/src/v1/index.js",
-      "types": "./dist/packages/fastkit-db-config/src/v1/index.d.ts"
-    }
-  },
   "dependencies": {
+    "@types/figlet": "^1.7.0",
+    "boxen": "^8.0.1",
+    "chalk": "^5.4.1",
     "dotenv": "^16.4.5",
+    "enquirer": "^2.4.1",
     "express": "^5.1.0",
+    "figlet": "^1.8.2",
+    "fs": "0.0.1-security",
+    "listr2": "^9.0.1",
+    "mongoose": "^8.16.3",
     "ts-node": "^10.9.2",
     "zod": "^3.23.8"
   },

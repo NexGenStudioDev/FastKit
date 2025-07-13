@@ -16,13 +16,6 @@
     "strict": true,
     "skipLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["./src/*"],
-      "@nexgenstudiodev/fastkit-config": ["src/packages/fastkit-config/src"],
-      "@nexgenstudiodev/fastkit-auth": ["src/packages/fastkit-auth/src"],
-      "@nexgenstudiodev/fastkit-dbconfig": ["src/packages/fastkit-db-config/src"]
-    }
-
   },
   "include": ["src/**/*"],
   "exclude": [
@@ -33,7 +26,6 @@
     "src/script/*.ts",
     "src/**/*.test.ts",
     "src/**/*.spec.ts",
-
     "src/**/__test__/**"
   ]
 

@@ -1,34 +1,53 @@
-// ============= FASTKIT MAIN ENTRY POINT =============
-// Import and re-export all modules for unified access
+import chalk from 'chalk';
+import boxen from 'boxen';
+import figlet from 'figlet';
 
-// Auth Module Exports
-export { 
-  AuthConstant, 
-  AuthController, 
-  AuthService 
-} from './packages/fastkit-auth/src/index';
+import tasks from './constant/FastKit_Script.constant';
 
-// Config Module Exports  
-export { 
-  FastKit, 
-  setup_FastKit_EnvFiles,
-  envConfig_Type,
-  Config_Type 
-} from './packages/fastkit-config/src/index';
+// Welcome message
+// 1. Welcome Banner
+console.log(
+    chalk.greenBright(
+      figlet.textSync('FastKit CLI', {
+        font: 'Standard',
+        horizontalLayout: 'default',
+        verticalLayout: 'default',
+      }
 
-// Database Config Module Exports
-export { 
-  DatabaseConfig, 
-  DatabaseType
+    )
+));
+  
+  // 2. Boxed Welcome Message
+  console.log(
+    boxen(chalk.cyan(`Welcome to FastKit
+Created by Abhishek
+We provide built-in APIs that you can select
+and use easily using this CLI.`), {
+      padding: 1,
+      borderColor: 'magenta',
+      align: 'left',
+      borderStyle: 'round'
+    })
+  );
 
-} from './packages/fastkit-db-config/src/v1/index';
 
-// Namespace Exports for modular access
-export * as auth from './packages/fastkit-auth/src/index';
-export * as config from './packages/fastkit-config/src/index';
-export * as db from './packages/fastkit-db-config/src/v1/index';
+  
+  
+  // 3. Task Logging (with spinners and status)
 
-// Wildcard exports for convenience
-export * from './packages/fastkit-auth/src/index';
-export * from './packages/fastkit-config/src/index';
-export * from './packages/fastkit-db-config/src/v1/index';
+
+async function main() {
+
+  tasks.run()
+  
+
+
+}
+
+
+
+
+main()
+
+export default main;
+
