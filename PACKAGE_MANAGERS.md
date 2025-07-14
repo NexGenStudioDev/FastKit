@@ -141,9 +141,10 @@ If you're working on a new feature or a major update and want users to test it *
 4. Bump version (choose one):
 
 ```bash
-npm run version:patch  # Small bugfixes, no new features
-npm run version:minor  # New features, no breaking changes
-npm run version:major  # 	Breaking changes, major updates
+npm run version:patch  # Patch release: small bug fixes, no new features
+npm run version:minor  # Minor release: new features, no breaking changes
+npm run version:major  # Major release: breaking changes and significant updates
+
 ```
 
 5. Publish:

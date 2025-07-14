@@ -10,21 +10,20 @@
   ],
   "scripts": {
     "clean": "rimraf dist",
-    "build": "pnpm -r run build && tsc && tsc-alias",
+    "build": "tsc && tsc-alias",
     "dev": "ts-node-dev --respawn --transpile-only --ignore-watch node_modules --ignore-watch dist src/FastKit.ts",
-    "build:main": "tsc && tsc-alias",
-    "rebuild": "pnpm -r run clean && pnpm -r run build",
-    "lint": "pnpm -r run lint",
-    "lint:fix": "pnpm -r run lint:fix",
-    "format": "npx prettier . --write",
-    "test": "pnpm -r run test",
-    "test:watch": "pnpm -r run test:watch",
-    "test:coverage": "pnpm -r run test:coverage",
-    "sync:versions": "npx npm-check-updates --workspace --dep=prod --upgrade --filter /@nexgenstudiodev/*/",
-    "sync:dev-versions": "npx npm-check-updates --workspace --dep=dev --upgrade --filter /@nexgenstudiodev/*/",
+    "rebuild": "pnpm run clean && pnpm run build",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix",
+    "format": "prettier --write .",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "sync:versions": "npx npm-check-updates --dep=prod --upgrade",
+    "sync:dev-versions": "npx npm-check-updates --dep=dev --upgrade",
     "sync:all-versions": "pnpm run sync:versions && pnpm run sync:dev-versions",
     "publish:all": "pnpm -r publish --access public --no-git-checks",
-    "postinstall": "pnpm -r run build"
+    "postinstall": "pnpm run build"
   },
   "keywords": [
     "fastkit",
@@ -32,7 +31,9 @@
     "database",
     "config",
     "utilities",
-    "typescript"
+    "typescript",
+    "express",
+    "api"
   ],
   "author": "NexGenStudioDev",
   "license": "MIT",
@@ -41,18 +42,17 @@
     "url": "https://github.com/nexgenstudiodev/fastkit.git"
   },
   "packageManager": "pnpm@10.12.1",
-  "workspaces": [
-    "packages/*"
-  ],
   "dependencies": {
     "@types/figlet": "^1.7.0",
+    "@types/jsonwebtoken": "^9.0.10",
+    "argon2": "^0.43.0",
     "boxen": "^8.0.1",
     "chalk": "^5.4.1",
     "dotenv": "^16.4.5",
     "enquirer": "^2.4.1",
     "express": "^5.1.0",
     "figlet": "^1.8.2",
-    "fs": "0.0.1-security",
+    "jsonwebtoken": "^9.0.2",
     "listr2": "^9.0.1",
     "mongoose": "^8.16.3",
     "ts-node": "^10.9.2",
@@ -73,14 +73,13 @@
     "prompts": "^2.4.2",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.4.0",
-    "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsc-alias": "^1.8.16",
     "tsconfig-paths": "^4.2.0",
     "typescript": "^5.8.3"
   },
   "lint-staged": {
-    "packages/**/*.{ts,tsx}": [
+    "**/*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write"
     ]

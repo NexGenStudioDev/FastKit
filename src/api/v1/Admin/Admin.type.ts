@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 
-export interface IAdmin extends Document {
+export interface IAdmin  {
   name: string;
   email: string;
   password: string;

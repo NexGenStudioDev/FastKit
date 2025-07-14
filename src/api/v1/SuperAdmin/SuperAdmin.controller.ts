@@ -4,8 +4,9 @@ import { UserValidator } from '../user/user.validator';
 import SendResponse from '../../../utils/SendResponse';
 import SuperAdminConstant from './SuperAdmin.constant';
 import { ZodError } from 'zod';
-import StatusCode_Constant from '../../../constant/StatusCode.constant';
+
 import userUtils from '../user/user.utils';
+import StatusCode_Constant from 'src/constant/StatusCode.constant';
 
 class SuperAdminController {
   createAdmin = async (req: Request, res: Response): Promise<void> => {
@@ -21,8 +22,10 @@ class SuperAdminController {
 
       SendResponse.success(res, 201, SuperAdminConstant.ADMIN_CREATED_SUCCESSFULLY, createdAdmin);
     } catch (error: any) {
+    
       if (error instanceof ZodError) {
-        const zodMessage = error._zod.def[0].message;
+        // Handle Zod validation errors
+        const zodMessage = error.errors.map((err) => err.message).join(', ');
         SendResponse.error(res, StatusCode_Constant.BAD_REQUEST, zodMessage);
       }
 
