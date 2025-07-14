@@ -7,47 +7,37 @@ import tasks from './constant/FastKit_Script.constant';
 // Welcome message
 // 1. Welcome Banner
 console.log(
-    chalk.greenBright(
-      figlet.textSync('FastKit CLI', {
-        font: 'Standard',
-        horizontalLayout: 'default',
-        verticalLayout: 'default',
-      }
+  chalk.greenBright(
+    figlet.textSync('FastKit CLI', {
+      font: 'Standard',
+      horizontalLayout: 'default',
+      verticalLayout: 'default',
+    }),
+  ),
+);
 
-    )
-));
-  
-  // 2. Boxed Welcome Message
-  console.log(
-    boxen(chalk.cyan(`Welcome to FastKit
+// 2. Boxed Welcome Message
+console.log(
+  boxen(
+    chalk.cyan(`Welcome to FastKit
 Created by Abhishek
 We provide built-in APIs that you can select
-and use easily using this CLI.`), {
+and use easily using this CLI.`),
+    {
       padding: 1,
       borderColor: 'magenta',
       align: 'left',
-      borderStyle: 'round'
-    })
-  );
+      borderStyle: 'round',
+    },
+  ),
+);
 
-
-  
-  
-  // 3. Task Logging (with spinners and status)
-
+// 3. Task Logging (with spinners and status)
 
 async function main() {
-
-  tasks.run()
-  
-
-
+  tasks.run();
 }
 
-
-
-
-main()
+main();
 
 export default main;
-

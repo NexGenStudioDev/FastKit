@@ -10,21 +10,23 @@
 ## 📥 Installation
 
 ### Using npm
+
 ```bash
 npm install @nexgenstudiodev/fastkit
 ```
 
 ### Using pnpm
+
 ```bash
 pnpm add @nexgenstudiodev/fastkit
 ```
+
 ### Using yarn
 
 ```bash
 yarn add @nexgenstudiodev/fastkit
 ```
 
-
 ## 🔧 Development Scripts
 
 The following scripts are available via `npm run <script>` or `pnpm run <script>`:
@@ -32,35 +34,28 @@ The following scripts are available via `npm run <script>` or `pnpm run <script>
 ## 🔧 Development Scripts
 
 The following scripts are available via `npm run <script>` or `pnpm run <script>`:
-
-
-
 
 ### 📦 SETUP.md – NPM Token Authentication with .env and CLI
 
-
-| Script             | Description                                                      |
-|--------------------|------------------------------------------------------------------|
-| **build**          | Compile TypeScript using `tsc` and fix paths using `tsc-alias`  |
-| **clean**          | Delete the `dist` directory using `rimraf`                      |
-| **rebuild**        | Clean and then build the project                                 |
-| **lint**           | Run ESLint on all `.ts` and `.tsx` files in `src/`              |
-| **lint:fix**       | Automatically fix lint issues                                    |
-| **format**         | Format source files using Prettier                               |
-| **test**           | Run all tests using Jest                                         |
-| **test:watch**     | Watch and re-run tests on file changes                           |
-| **test:coverage**  | Generate code coverage report                                    |
-| **start:dev**      | Start dev server using `ts-node-dev`                             |
-| **prepublishOnly** | Hook to format, lint, and build before publishing                |
-| **publish:npm**    | Publish package to npm using npm CLI                             |
-| **publish:pnpm**   | Publish package to npm using pnpm (skip git checks)              |
-| **version:patch**  | Bump patch version                                               |
-| **version:minor**  | Bump minor version                                               |
-| **version:major**  | Bump major version                                               |
-| **add**            | *(Your custom script — specify its function if needed)*          |
-
-
-
+| Script             | Description                                                    |
+| ------------------ | -------------------------------------------------------------- |
+| **build**          | Compile TypeScript using `tsc` and fix paths using `tsc-alias` |
+| **clean**          | Delete the `dist` directory using `rimraf`                     |
+| **rebuild**        | Clean and then build the project                               |
+| **lint**           | Run ESLint on all `.ts` and `.tsx` files in `src/`             |
+| **lint:fix**       | Automatically fix lint issues                                  |
+| **format**         | Format source files using Prettier                             |
+| **test**           | Run all tests using Jest                                       |
+| **test:watch**     | Watch and re-run tests on file changes                         |
+| **test:coverage**  | Generate code coverage report                                  |
+| **start:dev**      | Start dev server using `ts-node-dev`                           |
+| **prepublishOnly** | Hook to format, lint, and build before publishing              |
+| **publish:npm**    | Publish package to npm using npm CLI                           |
+| **publish:pnpm**   | Publish package to npm using pnpm (skip git checks)            |
+| **version:patch**  | Bump patch version                                             |
+| **version:minor**  | Bump minor version                                             |
+| **version:major**  | Bump major version                                             |
+| **add**            | _(Your custom script — specify its function if needed)_        |
 
 ### 🚀 Publishing Workflow
 
@@ -69,10 +64,11 @@ The following scripts are available via `npm run <script>` or `pnpm run <script>
 1. Make your changes
 2. Run tests:
 
- ```bash
- npm test
- ```
-3. Build the project: 
+```bash
+npm test
+```
+
+3. Build the project:
 
 ```bash
 npm run build
@@ -127,8 +123,8 @@ If you're working on a new feature or a major update and want users to test it *
 
    This way, your beta version is available for testing, but users installing your package normally will still get the stable latest version.
 
-
 ### Using pnpm
+
 1. Make your changes
 2. Run tests:
 
@@ -144,70 +140,65 @@ If you're working on a new feature or a major update and want users to test it *
 
 4. Bump version (choose one):
 
-````bash
+```bash
 npm run version:patch  # Small bugfixes, no new features
 npm run version:minor  # New features, no breaking changes
 npm run version:major  # 	Breaking changes, major updates
-````
+```
 
 5. Publish:
 
-````bash
+```bash
 pnpm run publish:pnpm
-````
+```
 
 ## ⚙️ Configuration Files
 
-| File               | Description                      |
-|--------------------|---------------------------------|
-| `package.json`      | Project configuration (shared)  |
-| `.pnpmrc`           | pnpm-specific configuration     |
-| `.npmignore`        | Files to exclude from npm package|
-| `pnpm-lock.yaml`    | pnpm lockfile (auto-generated)  |
-| `package-lock.json` | npm lockfile (auto-generated)   |
+| File                | Description                       |
+| ------------------- | --------------------------------- |
+| `package.json`      | Project configuration (shared)    |
+| `.pnpmrc`           | pnpm-specific configuration       |
+| `.npmignore`        | Files to exclude from npm package |
+| `pnpm-lock.yaml`    | pnpm lockfile (auto-generated)    |
+| `package-lock.json` | npm lockfile (auto-generated)     |
 
 ---
-
-
 
 # Version & Tag Management for `@nexgenstudiodev/fastkit`
 
-| Topic                       | Command / Info                                              | Description                                   |
-|-----------------------------|------------------------------------------------------------|-----------------------------------------------|
-| **View all tags**            | `npm dist-tag ls @nexgenstudiodev/fastkit`                 | List all tags and their versions               |
-| **Set latest tag version**   | `npm dist-tag add @nexgenstudiodev/fastkit@1.1.3 latest`   | Point `latest` tag to version `1.1.3`          |
-| **Tag a version as beta**    | `npm dist-tag add @nexgenstudiodev/fastkit@2.0.0 beta`     | Mark version `2.0.0` as `beta`                 |
-| **Install latest version**   | `npm install @nexgenstudiodev/fastkit`                      | Install version tagged `latest`                 |
-| **Install specific version** | `npm install @nexgenstudiodev/fastkit@1.1.3`                | Install exact version `1.1.3`                   |
-| **Install tagged version**   | `npm install @nexgenstudiodev/fastkit@beta`                 | Install version tagged `beta`                   |
-| **Publish with tag**         | `npm publish --tag latest` or `npm publish --tag beta`      | Publish package with specified tag              |
-| **Clear npm cache**          | `npm cache clean --force`                                   | Fix cache issues when updates don’t appear     |
+| Topic                        | Command / Info                                           | Description                                |
+| ---------------------------- | -------------------------------------------------------- | ------------------------------------------ |
+| **View all tags**            | `npm dist-tag ls @nexgenstudiodev/fastkit`               | List all tags and their versions           |
+| **Set latest tag version**   | `npm dist-tag add @nexgenstudiodev/fastkit@1.1.3 latest` | Point `latest` tag to version `1.1.3`      |
+| **Tag a version as beta**    | `npm dist-tag add @nexgenstudiodev/fastkit@2.0.0 beta`   | Mark version `2.0.0` as `beta`             |
+| **Install latest version**   | `npm install @nexgenstudiodev/fastkit`                   | Install version tagged `latest`            |
+| **Install specific version** | `npm install @nexgenstudiodev/fastkit@1.1.3`             | Install exact version `1.1.3`              |
+| **Install tagged version**   | `npm install @nexgenstudiodev/fastkit@beta`              | Install version tagged `beta`              |
+| **Publish with tag**         | `npm publish --tag latest` or `npm publish --tag beta`   | Publish package with specified tag         |
+| **Clear npm cache**          | `npm cache clean --force`                                | Fix cache issues when updates don’t appear |
 
 ---
 
-
-
-
 ## ✅ Best Practices
 
-- Use a single package manager throughout your project  
-- Commit lockfiles to ensure consistent builds  
-- Use the correct CLI scripts based on your package manager  
-- Use **npm** for version management  
-- Use either **npm** or **pnpm** to publish — do not mix both  
+- Use a single package manager throughout your project
+- Commit lockfiles to ensure consistent builds
+- Use the correct CLI scripts based on your package manager
+- Use **npm** for version management
+- Use either **npm** or **pnpm** to publish — do not mix both
 
 ---
 
 ## 📊 Package Manager Comparison
 
-| Feature           | npm          | pnpm           |
-|-------------------|--------------|----------------|
-| Speed             | Moderate     | Fast           |
-| Disk Usage        | High         | Low            |
-| Node Modules      | Full copy    | Symlinked      |
-| Lockfile          | package-lock.json | pnpm-lock.yaml  |
-| Workspace Support | ✅           | ✅             |
-| Compatibility     | Universal    | Growing        |
+| Feature           | npm               | pnpm           |
+| ----------------- | ----------------- | -------------- |
+| Speed             | Moderate          | Fast           |
+| Disk Usage        | High              | Low            |
+| Node Modules      | Full copy         | Symlinked      |
+| Lockfile          | package-lock.json | pnpm-lock.yaml |
+| Workspace Support | ✅                | ✅             |
+| Compatibility     | Universal         | Growing        |
 
 ---
 
@@ -225,17 +216,16 @@ pnpm run publish:pnpm
   Bump the version before attempting to publish.
 
 - **Build errors**  
-  Try the following:  
-  - Check for syntax errors or missing dependencies  
-  - Delete `node_modules` and reinstall packages  
-  - Ensure your TypeScript configuration is correct  
+  Try the following:
+  - Check for syntax errors or missing dependencies
+  - Delete `node_modules` and reinstall packages
+  - Ensure your TypeScript configuration is correct
   - Run `npm run clean` before building again
 
 ```bash
 npm run clean
 npm run build
 ```
-
 
 ### Environment Setup
 
@@ -261,21 +251,21 @@ Git Credential Manager securely stores your GitHub and npm tokens, so you don’
   It comes bundled with [Git for Windows](https://git-scm.com/download/win).
 
 - **macOS / Linux:**  
-  Install Git Credential Manager via your package manager or from the official releases:  
-  - For macOS (using Homebrew):  
+  Install Git Credential Manager via your package manager or from the official releases:
+  - For macOS (using Homebrew):
     ```bash
     brew install --cask git-credential-manager-core
-    ```  
+    ```
   - For Linux, follow instructions here:  
     [https://aka.ms/gcm/linux](https://aka.ms/gcm/linux)
 
 ### Configuration
 
-Once installed, you can enable Git Credential Manager by running:  
+Once installed, you can enable Git Credential Manager by running:
+
 ```bash
 git-credential-manager-core configure
 ```
-
 
 ### Setting NPM Token in .npmrc
 
@@ -286,7 +276,7 @@ save-prefix=^
 
 ```
 
--  Set your NPM_TOKEN as an environment variable in your shell or CI environment:
+- Set your NPM_TOKEN as an environment variable in your shell or CI environment:
 
 ```bash
 export NPM_TOKEN=your_actual_token_here

@@ -15,7 +15,7 @@
     "resolveJsonModule": true,
     "strict": true,
     "skipLibCheck": true,
-    "baseUrl": ".",
+    "baseUrl": "."
   },
   "include": ["src/**/*"],
   "exclude": [
@@ -28,5 +28,4 @@
     "src/**/*.spec.ts",
     "src/**/__test__/**"
   ]
-
 }

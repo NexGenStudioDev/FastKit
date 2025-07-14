@@ -1,6 +1,3 @@
-
-class SuperAdminUtils {
-   
-}
+class SuperAdminUtils {}
 
 export default new SuperAdminUtils();

@@ -16,7 +16,7 @@
     "rebuild": "pnpm -r run clean && pnpm -r run build",
     "lint": "pnpm -r run lint",
     "lint:fix": "pnpm -r run lint:fix",
-    "format": "pnpm -r run format",
+    "format": "npx prettier . --write",
     "test": "pnpm -r run test",
     "test:watch": "pnpm -r run test:watch",
     "test:coverage": "pnpm -r run test:coverage",

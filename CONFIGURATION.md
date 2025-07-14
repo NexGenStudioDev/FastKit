@@ -26,16 +26,16 @@ const config: envType = {
   server: {
     port: 3000,
     host: 'localhost',
-    environment: 'development'
+    environment: 'development',
   },
   database: {
     type: 'mongodb',
-    url: 'mongodb://localhost:27017/myapp'
+    url: 'mongodb://localhost:27017/myapp',
   },
   jwt: {
     secret: 'your-secret-key',
-    expiresIn: '24h'
-  }
+    expiresIn: '24h',
+  },
 };
 
 // Create FastKitConfig instance and write to .env
@@ -64,12 +64,12 @@ The main configuration interface that defines all possible configuration options
 
 ```typescript
 interface envType {
-  server: ServerConfig;      // Required: Server configuration
-  database: DatabaseConfig; // Required: Database configuration  
-  jwt: JWTConfig;           // Required: JWT configuration
-  cors?: CORSConfig;        // Optional: CORS configuration
+  server: ServerConfig; // Required: Server configuration
+  database: DatabaseConfig; // Required: Database configuration
+  jwt: JWTConfig; // Required: JWT configuration
+  cors?: CORSConfig; // Optional: CORS configuration
   security?: SecurityConfig; // Optional: Security settings
-  email?: EmailConfig;      // Optional: Email configuration
+  email?: EmailConfig; // Optional: Email configuration
   custom?: Record<string, any>; // Optional: Custom variables
 }
 ```
@@ -78,10 +78,10 @@ interface envType {
 
 ```typescript
 interface ServerConfig {
-  port: number;                                    // Server port (required)
-  host?: string;                                   // Server host (default: 'localhost')
+  port: number; // Server port (required)
+  host?: string; // Server host (default: 'localhost')
   environment: 'development' | 'production' | 'test'; // Environment (required)
-  nodeEnv?: string;                               // Additional NODE_ENV value
+  nodeEnv?: string; // Additional NODE_ENV value
 }
 ```
 
@@ -90,12 +90,12 @@ interface ServerConfig {
 ```typescript
 interface DatabaseConfig {
   type: 'mongodb' | 'mysql' | 'postgresql' | 'sqlite'; // Database type (required)
-  host?: string;                                       // Database host
-  port?: number;                                       // Database port
-  username?: string;                                   // Database username
-  password?: string;                                   // Database password
-  database?: string;                                   // Database name
-  url?: string;                                        // Full connection URL (alternative to individual fields)
+  host?: string; // Database host
+  port?: number; // Database port
+  username?: string; // Database username
+  password?: string; // Database password
+  database?: string; // Database name
+  url?: string; // Full connection URL (alternative to individual fields)
 }
 ```
 
@@ -103,10 +103,10 @@ interface DatabaseConfig {
 
 ```typescript
 interface JWTConfig {
-  secret: string;                                      // JWT secret (required)
-  expiresIn?: string;                                 // Token expiration (default: '24h')
-  refreshSecret?: string;                             // Refresh token secret
-  refreshExpiresIn?: string;                          // Refresh token expiration
+  secret: string; // JWT secret (required)
+  expiresIn?: string; // Token expiration (default: '24h')
+  refreshSecret?: string; // Refresh token secret
+  refreshExpiresIn?: string; // Refresh token expiration
   algorithm?: 'HS256' | 'HS384' | 'HS512' | 'RS256' | 'RS384' | 'RS512'; // Algorithm
 }
 ```
@@ -115,13 +115,13 @@ interface JWTConfig {
 
 ```typescript
 interface CORSConfig {
-  origin?: string | string[] | boolean;              // Allowed origins
-  methods?: string[];                                 // Allowed HTTP methods
-  allowedHeaders?: string[];                          // Allowed headers
-  credentials?: boolean;                              // Allow credentials
-  maxAge?: number;                                    // Preflight cache duration
-  preflightContinue?: boolean;                        // Pass preflight to next handler
-  optionsSuccessStatus?: number;                      // Success status for OPTIONS
+  origin?: string | string[] | boolean; // Allowed origins
+  methods?: string[]; // Allowed HTTP methods
+  allowedHeaders?: string[]; // Allowed headers
+  credentials?: boolean; // Allow credentials
+  maxAge?: number; // Preflight cache duration
+  preflightContinue?: boolean; // Pass preflight to next handler
+  optionsSuccessStatus?: number; // Success status for OPTIONS
 }
 ```
 
@@ -129,11 +129,11 @@ interface CORSConfig {
 
 ```typescript
 interface SecurityConfig {
-  rateLimitWindowMs?: number;                         // Rate limit window (ms)
-  rateLimitMax?: number;                             // Max requests per window
-  helmet?: boolean;                                   // Enable helmet middleware
-  compression?: boolean;                              // Enable compression
-  morgan?: boolean;                                   // Enable morgan logging
+  rateLimitWindowMs?: number; // Rate limit window (ms)
+  rateLimitMax?: number; // Max requests per window
+  helmet?: boolean; // Enable helmet middleware
+  compression?: boolean; // Enable compression
+  morgan?: boolean; // Enable morgan logging
 }
 ```
 
@@ -141,13 +141,13 @@ interface SecurityConfig {
 
 ```typescript
 interface EmailConfig {
-  service?: string;                                   // Email service (e.g., 'gmail')
-  host?: string;                                      // SMTP host
-  port?: number;                                      // SMTP port
-  secure?: boolean;                                   // Use TLS
-  username?: string;                                  // SMTP username
-  password?: string;                                  // SMTP password
-  from?: string;                                      // Default from address
+  service?: string; // Email service (e.g., 'gmail')
+  host?: string; // SMTP host
+  port?: number; // SMTP port
+  secure?: boolean; // Use TLS
+  username?: string; // SMTP username
+  password?: string; // SMTP password
+  from?: string; // Default from address
 }
 ```
 
@@ -160,25 +160,25 @@ const devConfig: envType = {
   server: {
     port: 3000,
     host: 'localhost',
-    environment: 'development'
+    environment: 'development',
   },
   database: {
     type: 'mongodb',
-    url: 'mongodb://localhost:27017/myapp_dev'
+    url: 'mongodb://localhost:27017/myapp_dev',
   },
   jwt: {
     secret: 'dev-secret-key',
-    expiresIn: '24h'
+    expiresIn: '24h',
   },
   cors: {
     origin: true,
-    credentials: true
+    credentials: true,
   },
   security: {
     rateLimitMax: 1000,
     helmet: false,
-    morgan: true
-  }
+    morgan: true,
+  },
 };
 
 const config = new FastKitConfig(devConfig, '.env.development');
@@ -192,26 +192,26 @@ const prodConfig: envType = {
   server: {
     port: parseInt(process.env.PORT || '8080'),
     host: '0.0.0.0',
-    environment: 'production'
+    environment: 'production',
   },
   database: {
     type: 'postgresql',
-    url: process.env.DATABASE_URL || 'postgresql://user:pass@host:5432/db'
+    url: process.env.DATABASE_URL || 'postgresql://user:pass@host:5432/db',
   },
   jwt: {
     secret: process.env.JWT_SECRET || 'change-this-in-production',
     expiresIn: '1h',
-    algorithm: 'HS256'
+    algorithm: 'HS256',
   },
   cors: {
     origin: ['https://yourdomain.com'],
-    credentials: true
+    credentials: true,
   },
   security: {
     rateLimitMax: 100,
     helmet: true,
-    morgan: false
-  }
+    morgan: false,
+  },
 };
 
 const config = new FastKitConfig(prodConfig, '.env.production');
@@ -256,12 +256,12 @@ const config = new FastKitConfig(myConfig);
 config.updateConfig({
   server: {
     ...config.getConfig().server,
-    port: 5000
+    port: 5000,
   },
   custom: {
     NEW_FEATURE: 'enabled',
-    UPDATED_AT: new Date().toISOString()
-  }
+    UPDATED_AT: new Date().toISOString(),
+  },
 });
 
 // Merge with existing .env file
@@ -273,11 +273,13 @@ await config.mergeWithExisting();
 The configuration system generates environment variables with the following naming conventions:
 
 ### Server Variables
+
 - `PORT` - Server port
 - `HOST` - Server host
 - `NODE_ENV` - Node environment
 
 ### Database Variables
+
 - `DATABASE_TYPE` - Database type
 - `DATABASE_URL` - Full database connection URL
 - `DATABASE_HOST` - Database host
@@ -287,6 +289,7 @@ The configuration system generates environment variables with the following nami
 - `DATABASE_NAME` - Database name
 
 ### JWT Variables
+
 - `JWT_SECRET` - JWT signing secret
 - `JWT_EXPIRES_IN` - Token expiration time
 - `JWT_REFRESH_SECRET` - Refresh token secret
@@ -294,6 +297,7 @@ The configuration system generates environment variables with the following nami
 - `JWT_ALGORITHM` - JWT algorithm
 
 ### CORS Variables
+
 - `CORS_ORIGIN` - Allowed origins (comma-separated)
 - `CORS_METHODS` - Allowed methods (comma-separated)
 - `CORS_ALLOWED_HEADERS` - Allowed headers (comma-separated)
@@ -301,6 +305,7 @@ The configuration system generates environment variables with the following nami
 - `CORS_MAX_AGE` - Preflight cache duration
 
 ### Security Variables
+
 - `RATE_LIMIT_WINDOW_MS` - Rate limiting window
 - `RATE_LIMIT_MAX` - Maximum requests per window
 - `SECURITY_HELMET` - Enable helmet middleware
@@ -308,6 +313,7 @@ The configuration system generates environment variables with the following nami
 - `SECURITY_MORGAN` - Enable morgan logging
 
 ### Email Variables
+
 - `EMAIL_SERVICE` - Email service provider
 - `EMAIL_HOST` - SMTP host
 - `EMAIL_PORT` - SMTP port
@@ -394,7 +400,7 @@ const config = EnvManager.getEnvironmentConfig();
 const app = new FastKit({
   port: config.server.port,
   cors: config.cors,
-  security: config.security
+  security: config.security,
 });
 ```
 

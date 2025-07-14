@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
 - Initial project setup
 - Core FastKit framework
 - Modular architecture support
@@ -26,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-06-27
 
 ### Added
+
 - Initial release of FastKit
 - Modular, class-based toolkit for API development
 - TypeScript and Express.js integration
@@ -40,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Package publishing setup
 
 ### Features
+
 - **Core Framework**: Base FastKit class for managing features
 - **Auth Module**: Complete authentication system with controllers, services, and validators
 - **Modular Design**: Feature-based architecture for scalable API development
@@ -47,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Development Tools**: Linting, formatting, and development server setup
 
 ### Developer Experience
+
 - Hot reload development server with ts-node-dev
 - Automated code formatting with Prettier
 - Code quality enforcement with ESLint
@@ -54,6 +58,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Comprehensive build and publish pipeline
 
 ### Documentation
+
 - Detailed README with usage examples
 - Contributing guidelines
 - MIT License
@@ -102,4 +107,4 @@ Check out our [documentation](README.md) to get started building your first Fast
 
 ---
 
-*For more details about any release, see the [full changelog](https://github.com/NexGenStudioDev/FastKit/blob/main/CHANGELOG.md) or [release notes](https://github.com/NexGenStudioDev/FastKit/releases).*
+_For more details about any release, see the [full changelog](https://github.com/NexGenStudioDev/FastKit/blob/main/CHANGELOG.md) or [release notes](https://github.com/NexGenStudioDev/FastKit/releases)._
